@@ -6,12 +6,17 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "deploy": "wrangler pages deploy dist",
+    "preview:cf": "wrangler pages dev dist"
   },
   "dependencies": {
     "@nuxt/content": "^3.10.0",
     "better-sqlite3": "^12.6.0",
     "docus": "^5.4.2",
     "nuxt": "^4.2.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.59.2"
   }
 }

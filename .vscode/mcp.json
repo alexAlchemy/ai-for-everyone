@@ -1,0 +1,9 @@
+{
+	"servers": {
+		"docus-nuxt-docs-mcp": {
+			"url": "https://docus.dev/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}

@@ -1,13 +1,11 @@
 ---
 title: Courses
 description: Explore our collection of AI courses
+layout: docs
 navigation:
   title: Courses
   icon: i-heroicons-academic-cap
 ---
-
-
-## Available Courses
 
 ### AI for Work
 Learn how to leverage AI tools to enhance your productivity and effectiveness in professional settings.

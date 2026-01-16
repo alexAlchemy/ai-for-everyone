@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a **Nuxt 4 + Nuxt Content v3** starter project for building content-driven websites. The architecture separates content (markdown files) from presentation (Vue components).
+This is a **Nuxt 4 + Nuxt Content v3 + Docus** educational website for AI courses. The architecture separates content (markdown files) from presentation (Vue components), extending the [Docus](https://docus.dev/) documentation theme for structured course delivery.
 
 ## Key Architecture Patterns
 
@@ -64,12 +64,45 @@ npm run preview  # Preview production build locally
 ## Dependencies
 
 - `@nuxt/content` v3.10.0 - Core content management
+- `docus` v5.4.2 - Documentation theme providing layouts, navigation, and styling
 - `better-sqlite3` v12.6.0 - Used by Nuxt Content for indexing
 - `nuxt` v4.2.2 - Framework (note: Nuxt 4, not 3)
+
+## Configuration Files
+
+- **`nuxt.config.ts`**: Extends Docus theme (`extends: ['docus']`), registers Content module
+- **`app.config.ts`**: Docus theme configuration (site title, description, socials, header, aside navigation, footer)
+- **`content.config.ts`**: Content collections config - single 'content' collection for all markdown
+
+## Content Structure
+
+This is an educational site with a hierarchical course structure:
+
+```
+content/
+├── index.md                    # Homepage
+├── about.md                    # About page
+└── courses/
+    ├── index.md                # Course catalog page
+    ├── ai-for-work/
+    │   ├── index.md            # Course landing page
+    │   ├── 01/
+    │   │   ├── index.md        # Module landing
+    │   │   ├── 01-introduction.md
+    │   │   └── 02-capabilities.md
+    │   └── 02/
+    │       └── ...
+    ├── ai-for-parents/
+    └── ai-for-small-business/
+```
+
+**Pattern**: Courses use nested folders for modules/lessons. Each folder should have an `index.md` for navigation.
 
 ## When Adding Features
 
 - **New pages**: Create markdown in `content/`, no route files needed
 - **New components**: Add to `app/components/`, auto-available in markdown
 - **Configuration**: Extend `nuxt.config.ts` for Nuxt modules, `content.config.ts` for content behavior
+- **Theme config**: Modify `app.config.ts` for Docus settings (navigation, branding, footer)
 - **Assets**: Place static files in `public/` directory
+- **New courses**: Follow the hierarchical pattern (`courses/course-name/module-number/lesson.md`)
