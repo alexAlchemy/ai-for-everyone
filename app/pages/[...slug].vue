@@ -11,8 +11,19 @@ if (!page.value) {
 </script>
 
 <template>
-  <ContentRenderer
-    v-if="page"
-    :value="page"
-  />
+  <div class="py-10">
+    <ContentRenderer
+      v-if="page"
+      :value="page"
+      class="content-wrapper"
+    />
+  </div>
 </template>
+
+<style scoped>
+.content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+</style>

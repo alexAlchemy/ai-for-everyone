@@ -31,8 +31,4 @@ export default defineAppConfig({
       iconLinks: [],
     },
   },
-
-  llms: {
-    domain: 'https://ai-for-everyone.dev',
-  }
 })

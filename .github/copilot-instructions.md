@@ -42,9 +42,11 @@ This is a **Nuxt 4 + Nuxt Content v3 + Docus** educational website for AI course
 ### Commands
 ```bash
 npm run dev      # Start dev server on http://localhost:3000
-npm run build    # Production build
+npm run build    # Production build for Cloudflare Pages
 npm run generate # Static site generation
 npm run preview  # Preview production build locally
+npm run deploy   # Deploy to Cloudflare Pages
+npm run preview:cf # Preview Cloudflare Pages build locally
 ```
 
 ### TypeScript Configuration
@@ -67,12 +69,40 @@ npm run preview  # Preview production build locally
 - `docus` v5.4.2 - Documentation theme providing layouts, navigation, and styling
 - `better-sqlite3` v12.6.0 - Used by Nuxt Content for indexing
 - `nuxt` v4.2.2 - Framework (note: Nuxt 4, not 3)
+- `wrangler` v4.59.2 - Cloudflare CLI for deployment
 
 ## Configuration Files
 
-- **`nuxt.config.ts`**: Extends Docus theme (`extends: ['docus']`), registers Content module
+- **`nuxt.config.ts`**: Extends Docus theme (`extends: ['docus']`), registers Content module, sets `nitro.preset: 'cloudflare-pages'` and `mcp: { enabled: false }`
 - **`app.config.ts`**: Docus theme configuration (site title, description, socials, header, aside navigation, footer)
 - **`content.config.ts`**: Content collections config - single 'content' collection for all markdown
+
+## Deployment: Cloudflare Pages
+
+The project is configured for serverless deployment on **Cloudflare Pages** via the Nitro `cloudflare-pages` preset.
+
+### Build & Deploy
+
+**Local deployment:**
+```bash
+npm run build        # Outputs to dist/
+npm run deploy       # Deploys dist/ to Cloudflare Pages
+npm run preview:cf   # Test Cloudflare build locally
+```
+
+**Via GitHub (Recommended):**
+1. Push to GitHub repository
+2. Connect repository to [Cloudflare Pages dashboard](https://dash.cloudflare.com/)
+3. Set build command: `npm run build`
+4. Set output directory: `dist`
+
+### Important Notes
+
+- **Nitro Preset**: Set to `cloudflare-pages` in `nuxt.config.ts` for edge runtime compatibility
+- **MCP Disabled**: `mcp: { enabled: false }` prevents build errors with Docus's MCP toolkit (not needed for Pages)
+- **Output Directory**: Build outputs to `dist/` (not `.output/public`)
+- **Wrangler**: Must be installed (`wrangler` in devDependencies) to use local preview or CLI deployment
+- **Gitignore**: `.wrangler/tmp` is ignored to prevent committing temporary build artifacts
 
 ## Content Structure
 
