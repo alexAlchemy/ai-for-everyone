@@ -1,6 +1,18 @@
-# Welcome to Nuxt Content Starter
+---
+title: Home
+description: Learn how to use AI effectively in your work, family life, and business
+navigation: false
+---
 
-This is the main page displaying Markdown located at [content/index.md](https://github.com/nuxt/starter/blob/content/content/index.md).
+# AI for Everyone
+
+Welcome! Learn how to use AI effectively in your work, family life, and business.
+
+## 📚 [Browse Our Courses](/courses)
+
+Explore practical AI courses designed for real people, not just tech experts.
+
+---
 
 Move to [about](/about) page.
 
